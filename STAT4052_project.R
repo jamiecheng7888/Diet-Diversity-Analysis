@@ -72,6 +72,8 @@ gam_mod <- gam(BMI ~Gender + family_history_with_overweight+FAVC+
                  FCVC+CAEC+SMOKE+CH2O+SCC+FAF+ CALC+ MTRANS+
                  s(Age)+s(NCP)+s(TUE),data = train)
 summary(gam_mod)
+par(mfrow = c(1,3))
+plot(gam_mod)
 # RMSE
 gam_pred <- predict(gam_mod, newdata = valid)
 sqrt(mean((gam_pred - valid$BMI)^2))
